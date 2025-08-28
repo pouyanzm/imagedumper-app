@@ -20,10 +20,9 @@ ImageDumper is a cross-platform Flutter application that automatically downloads
 
 ### 🎯 Technical Excellence
 
-- 🏗️ **Clean Architecture**: SOLID principles, dependency injection, and separation of concerns
 - 🌐 **Cross-Platform Mastery**: Single codebase for 5 platforms (Android, iOS, macOS, Windows, Linux)
 - ⚡ **Real-time Communication**: WebSocket implementation with automatic reconnection
-- 🧠 **Smart Network Detection**: Native platform integration for connection type awareness
+- 🧠 **Smart Network Detection**: Native code integration (Kotlin/Swift/C++) for real-time connection monitoring
 - 📱 **Platform-Optimized Storage**: Conditional logic for gallery vs. filesystem based on platform
 - 🔄 **State Management**: Reactive programming with Riverpod providers and notifiers
 - 🚫 **Intelligent Caching**: Duplicate prevention with SharedPreferences persistence
@@ -162,12 +161,6 @@ Example backend endpoints:
 
 ### 🏆 Professional Development Practices
 
-**Clean Architecture Implementation:**
-- **SOLID Principles**: Single responsibility, dependency inversion, and interface segregation
-- **Domain-Driven Design**: Clear separation between business logic and infrastructure
-- **Dependency Injection**: Providers pattern for loose coupling and testability
-- **Repository Pattern**: Abstract data access with multiple implementations
-
 **Advanced Flutter Techniques:**
 - **Method Channels**: Custom native platform communication (Android/iOS/macOS/Windows/Linux)
 - **Stream Programming**: Reactive downloads with real-time progress updates
@@ -244,7 +237,6 @@ flutter test --coverage
 - **path_provider**: Platform-specific directory access
 
 ### 🏗 Architecture Patterns
-- **Clean Architecture**: Domain-driven design with clear boundaries
 - **Repository Pattern**: Abstract data access layer
 - **Provider Pattern**: Dependency injection and inversion of control
 - **Observer Pattern**: Reactive state updates with streams
@@ -287,7 +279,6 @@ flutter build linux --release         # Linux
 - Platform-specific UI/UX optimization and permissions handling
 
 **Software Architecture:**
-- Clean Architecture implementation with SOLID principles
 - Domain-driven design with clear separation of concerns
 - Advanced design patterns (Repository, Provider, Observer, Strategy)
 - Dependency injection and inversion of control
