@@ -83,14 +83,7 @@ ImageDumper is a cross-platform Flutter application that automatically downloads
    flutter pub get
    ```
 
-3. **Configure backend URL** (if different from default)
-   ```dart
-   // lib/services/api_service.dart or lib/services/socket_service.dart
-   // Update the server URL in the respective service files
-   static const String baseUrl = 'http://your-backend-url:3000';
-   ```
-
-4. **Platform-specific setup**
+3. **Platform-specific setup**
 
    #### Android
    ```bash
@@ -152,7 +145,6 @@ Example backend endpoints:
 ### Configuration
 
 #### Network Settings
-- Backend server URL: Configured in `lib/services/api_service.dart` and `lib/services/socket_service.dart`
 - Connection timeout: 30 seconds (configurable)
 - Retry attempts: 3 (configurable)
 
@@ -164,68 +156,17 @@ Example backend endpoints:
 
 ## 🏗 Architecture
 
-### Project Structure
+ImageDumper follows **Clean Architecture** principles with clear separation of concerns:
 
-```
-lib/
-├── core/                   # Core utilities and constants
-│   ├── errors/           # Error handling
-│   ├── usecases/         # Base use case classes
-│   └── utils/            # Utility classes (SPManager, etc.)
-├── data/                  # Data layer
-│   ├── datasources/      # External data sources
-│   ├── models/           # Data models
-│   └── repositories/     # Repository implementations
-├── domain/               # Domain layer
-│   ├── entities/         # Business entities
-│   ├── repositories/     # Repository interfaces
-│   └── usecases/         # Business logic use cases
-├── presentation/         # Presentation layer
-│   └── providers/        # Riverpod state management
-├── services/             # Platform services
-│   ├── api_service.dart        # HTTP API client
-│   ├── download_service.dart   # Download management
-│   ├── network_service.dart    # Network monitoring
-│   └── socket_service.dart     # WebSocket management
-├── screens/              # UI screens
-└── main.dart            # App entry point
-```
+### Architecture Layers
+- **Presentation Layer**: UI components and state management (Riverpod)
+- **Domain Layer**: Business logic, entities, and use cases
+- **Data Layer**: External data sources and repository implementations
 
-### Clean Architecture Principles
-
-This project follows **Clean Architecture** principles:
-
-- **Domain Layer**: Contains business logic, entities, and use cases
-- **Data Layer**: Handles external data sources and repository implementations
-- **Presentation Layer**: Manages UI state and user interactions
-
-### State Management
-
-- **Riverpod**: Primary state management solution
-- **Providers**: Reactive state updates across the app
-- **Notifiers**: Handle complex state changes and side effects
-
-### Key Services
-
-#### NetworkService
-- Monitors network connectivity changes
-- Detects Wi-Fi vs mobile data vs Ethernet
-- Cross-platform implementation with native code
-
-#### DownloadService  
-- Manages image downloads from backend
-- Handles platform-specific storage
-- Implements duplicate prevention logic
-
-#### SocketService
-- Maintains WebSocket connection to backend
-- Handles reconnection logic
-- Processes real-time image notifications
-
-#### SPManager (SharedPreferences Manager)
-- Persistent storage for app preferences
-- Tracks download history and timestamps
-- Cross-platform key-value storage
+### Key Components
+- **Services**: Platform-specific implementations (Network, Download, Socket, API)
+- **Providers**: Reactive state management using Riverpod
+- **Native Integration**: Platform-specific code for network monitoring and storage
 
 ## 🛡 Permissions
 
@@ -260,27 +201,12 @@ This project follows **Clean Architecture** principles:
 
 ## 🧪 Testing
 
-### Running Tests
-
 ```bash
-# Unit tests
+# Run all tests
 flutter test
 
-# Integration tests
-flutter test integration_test/
-
-# Platform-specific tests
-flutter test --platform chrome  # Web
-flutter test --platform vm      # Desktop
-```
-
-### Test Coverage
-
-```bash
-# Generate coverage report
+# Run with coverage
 flutter test --coverage
-genhtml coverage/lcov.info -o coverage/html
-open coverage/html/index.html
 ```
 
 ## 📚 Dependencies
